@@ -8,9 +8,9 @@
     "start:dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
-    "build": "webpack --mode production",
+    "build": "cd client && webpack --mode production",
     "client": "cd client && npm start"
-  },
+  },  
   "engines": {
     "node": "18.17.1",
     "npm": "10.2.3"
