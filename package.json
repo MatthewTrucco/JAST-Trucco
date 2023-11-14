@@ -10,6 +10,9 @@
     "build": "webpack --mode production",
     "client": "cd client && npm start"
   },
+  "engines": {
+    "node": "18.17.1"
+  },
   "keywords": [
     "text-editor",
     "pwa",
