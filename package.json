@@ -12,7 +12,8 @@
     "client": "cd client && npm start"
   },
   "engines": {
-    "node": "18.17.1"
+    "node": "18.17.1",
+    "npm": "10.2.3"
   },
   "keywords": [
     "text-editor",
