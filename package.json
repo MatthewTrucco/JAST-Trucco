@@ -4,6 +4,7 @@
   "description": "Just Another Text Editor - A Progressive Web Application",
   "main": "server/server.js",
   "scripts": {
+    "heroku-postbuild": "npm run build",
     "start:dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server/server.js",
     "server": "nodemon server/server.js",

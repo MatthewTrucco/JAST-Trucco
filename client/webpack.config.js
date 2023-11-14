@@ -16,7 +16,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './client/index.html',
         title: 'Your PWA Title'
       }),
       new InjectManifest({
