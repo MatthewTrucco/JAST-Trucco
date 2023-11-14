@@ -2,10 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin'); // Import TerserPlugin
 
 module.exports = () => {
   return {
-    mode: 'production',
+    mode: 'development',
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js'
@@ -21,7 +22,7 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: './src-sw.js', // Path to your source service worker file
-        swDest: 'service-worker.js', // Destination filename in output directory
+        swDest: 'service-worker.js', // Destination filename in the output directory
       }),
       new WebpackPwaManifest({
         name: 'Your App Name',
@@ -37,6 +38,29 @@ module.exports = () => {
         ]
       })
     ],
+    optimization: {
+      minimize: true, // Enable minimization
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            // Add your Terser options here
+            ecma: undefined,
+            warnings: false,
+            parse: {},
+            compress: {},
+            mangle: true,
+            module: false,
+            output: null,
+            toplevel: false,
+            nameCache: null,
+            ie8: false,
+            keep_classnames: undefined,
+            keep_fnames: false,
+            safari10: false,
+          },
+        }),
+      ],
+    },
     module: {
       rules: [
         {
