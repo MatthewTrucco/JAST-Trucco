@@ -7,8 +7,8 @@ module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './client/src/js/index.js',
-      install: './client/src/js/install.js'
+      main: './src/js/index.js',
+      install: './src/js/install.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -16,11 +16,11 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './client/index.html',
+        template: './index.html',
         title: 'Your PWA Title'
       }),
       new InjectManifest({
-        swSrc: './client/src-sw.js', // Path to your source service worker file
+        swSrc: './src-sw.js', // Path to your source service worker file
         swDest: 'service-worker.js', // Destination filename in output directory
       }),
       new WebpackPwaManifest({
@@ -31,7 +31,7 @@ module.exports = () => {
         crossorigin: 'use-credentials', // Can be set to 'anonymous'
         icons: [
           {
-            src: path.resolve('client/src/images/logo.png'),
+            src: path.join(__dirname,'/src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512] // Multiple icon sizes
           }
         ]
